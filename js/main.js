@@ -93,7 +93,7 @@ async function loadProducts() {
     let results = await fetchJSONFiles()
     console.log(results)
     let objects = []
-    results.values().forEach(productData => {
+    results.forEach(productData => {
         objects.push(new ToyCarListing(
             productData["UPC"],
             productData["Make"],
