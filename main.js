@@ -1,6 +1,10 @@
+// endpoint constants 
 const CAT_FACT_API_ENDPOINT = "https://meowfacts.herokuapp.com/"
 const DOG_FACT_API_ENDPOINT = "https://dogapi.dog/api/v2/facts"
+const CAT_IMAGE_API_ENDPOINT = "https://api.thecatapi.com/v1/images/search"
+const DOG_IMAGE_API_ENDPOINT = "https://api.thedogapi.com/v1/images/search"
 
+// fetches json, handles try catch internally, simplifying code.
 async function fetchJSON(filename) {
     try {
         const response = await fetch(filename + '.json');
@@ -15,6 +19,8 @@ async function fetchJSON(filename) {
     }
 }
 
+// fetches a cat image url from the CAT_IMAGE_API_ENDPOINT
+// returns string representing image url
 async function getCatImage(apiKey) {
     const headers = new Headers({
         "Content-Type": "application/json",
@@ -28,7 +34,7 @@ async function getCatImage(apiKey) {
     };
 
     try {
-        const response = await fetch("https://api.thecatapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1", requestOptions)
+        const response = await fetch(CAT_IMAGE_API_ENDPOINT + "?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1", requestOptions)
         if (response.ok) {
             const data = await response.json()
             if (data) {
@@ -42,6 +48,8 @@ async function getCatImage(apiKey) {
     }
 }
 
+// fetches a dog image url from the DOG_IMAGE_API_ENDPOINT
+// returns string representing image url
 async function getDogImage(apiKey) {
     const headers = new Headers({
         "Content-Type": "application/json",
@@ -55,7 +63,7 @@ async function getDogImage(apiKey) {
     };
 
     try {
-        const response = await fetch("https://api.thedogapi.com/v1/images/search?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1", requestOptions)
+        const response = await fetch(DOG_IMAGE_API_ENDPOINT + "?size=med&mime_types=jpg&format=json&has_breeds=true&order=RANDOM&page=0&limit=1", requestOptions)
         if (response.ok) {
             const data = await response.json();
             if (data) {
@@ -71,6 +79,8 @@ async function getDogImage(apiKey) {
     }
 }
 
+// fetches a cat fact from the CAT_FACT_API_ENDPOINT
+// returns string
 async function getCatFact() {
     try {
         const response = await fetch(CAT_FACT_API_ENDPOINT);
@@ -89,6 +99,8 @@ async function getCatFact() {
     }
 }
 
+// fetches a dog fact from the DOG_FACT_API_ENDPOINT
+// returns string
 async function getDogFact() {
     try {
         const response = await fetch(DOG_FACT_API_ENDPOINT);
@@ -107,30 +119,42 @@ async function getDogFact() {
     }
 }
 
+// sets on-screen current fact image to given imageUrl
 function setCurrentFactImg(imageUrl) {
     const currentFactImg = document.querySelector("#currentFact img")
     currentFactImg.src = imageUrl
 }
 
+// sets on-screen current fact to given text
 function setCurrentFactText(text) {
     const currentFactImg = document.querySelector("#currentFact p")
     currentFactImg.textContent = text
 }
 
+function clearDisplay() {
+    setCurrentFactText("");
+    setCurrentFactImg("./assets/Loading.png");
+}
+
+// fetches and displays dog fact on-screen
 async function displayDogFact(imageApiKey) {
+    clearDisplay();
     const dogFact = await getDogFact();
     const dogImage = await getDogImage(imageApiKey);
     setCurrentFactImg(dogImage);
     setCurrentFactText(dogFact);
 }
 
+// fetches and displays cat fact on-screen
 async function displayCatFact(imageApiKey) {
+    clearDisplay();
     const catFact = await getCatFact();
     const catImage = await getCatImage(imageApiKey);
     setCurrentFactImg(catImage);
     setCurrentFactText(catFact);
 }
 
+// initializes event connections and loads initial display
 function init(secrets) {
     const catFactButton = document.querySelector("#getRandomCat");
     const dogFactButton = document.querySelector("#getRandomDog");
@@ -142,6 +166,7 @@ function init(secrets) {
     displayCatFact();
 }
 
+// boots application
 async function main() {
     const secrets = await fetchJSON("secrets");
     if (secrets) {
@@ -151,8 +176,10 @@ async function main() {
     }
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', main);
-} else {
+// if the DOM is already loaded, the program may start
+if (document.readyState !== 'loading') {
     main();
 }
+
+// otherwise we will wait for the DOMContentLoaded event to fire
+document.addEventListener('DOMContentLoaded', main);

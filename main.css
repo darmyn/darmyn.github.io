@@ -40,7 +40,7 @@ main p {
 }
 
 footer {
-    margin-top: auto; /* Push the footer to the bottom by making use of auto margin */
+    margin-top: auto;
     width: 100%;
     background-color: rgb(100, 206, 255);
     display: flex;
