@@ -1,0 +1,113 @@
+#controls {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background-color: yellow;
+    width: 30%;
+}
+
+#controls p {
+    width: 80%;
+    height: 20%;
+    text-align: center;
+    font-size: 20px;
+}
+
+#word-selector-buttons{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    gap: 2%;
+    width: 100%;
+    list-style-type: none;
+}
+
+#word-selector-buttons li {
+    list-style-type: none;
+    width: 15%; /* Make the white ring take the full width of its parent */
+    margin-top: 10%;
+    padding-top: 15%; /* This creates a square box for the circle */
+    border-radius: 100%; /* Make it a circle */
+    border: 2px solid white;
+    position: relative; /* Position relative to its parent */
+    top: 0; /* Position it at the top of its parent */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
+    transition: background-color 0.3s; /* Add transition property for smooth color change */
+}
+
+#word-selector-buttons li:nth-child(1) {
+    background-color: purple;
+}
+#word-selector-buttons li:nth-child(2) {
+    background-color: blue;
+}
+#word-selector-buttons li:nth-child(3) {
+    background-color: green;
+}
+#word-selector-buttons li:nth-child(4) {
+    background-color: orange;
+}
+#word-selector-buttons li:nth-child(5) {
+    background-color: pink;
+}
+
+#word-selector-buttons li:hover {
+    background-color: black;
+    transition: background-color .3s;
+}
+
+#output-buttons {
+    gap: 2%;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+#output-buttons div {
+    display: flex;
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
+}
+
+#output-buttons li {
+    list-style-type: none;
+    width: 20%;
+    margin-top: 10%;
+    padding-top: 0; /* This creates a square box for the circle */
+    border-radius: 50%; /* Make it a circle */
+    border: 2px solid white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
+    transition: background-color 0.3s; /* Add transition property for smooth color change */
+}
+
+#output-buttons li:nth-child(1) {
+    background-color: red;
+}
+#output-buttons li:nth-child(2) {
+    background-color: blue;
+}
+
+#output-buttons li:nth-child(3) {
+    background-color: rgb(0, 255, 234);
+}
+
+#output-buttons li:nth-child(4) {
+    background-color: rgb(0, 255, 51);
+}
+
+#output-buttons li:hover {
+    background-color: black;
+    transition: background-color .3s;
+}

@@ -1,0 +1,84 @@
+#columns {
+    border-radius: 10px;
+    background-color: yellow;
+    width: 70%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
+}
+
+.selected {
+    opacity: 100%;
+}
+
+.deselected {
+    opacity: 50%
+}
+
+#columns ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style-type: none;
+    gap: 2%;
+}
+
+#columns ul li {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 17%;
+    height: 95%;
+    overflow: hidden;
+}
+
+#columns ul li:nth-child(1) {
+    background-color: purple;
+}
+#columns ul li:nth-child(2) {
+    background-color: blue;
+}
+#columns ul li:nth-child(3) {
+    background-color: green;
+}
+#columns ul li:nth-child(4) {
+    background-color: orange;
+}
+#columns ul li:nth-child(5) {
+    background-color: pink;
+}
+
+.white-ring {
+    width: 40%; /* Make the white ring take the full width of its parent */
+    margin-top: 10%;
+    padding-top: 40%; /* This creates a square box for the circle */
+    border-radius: 100%; /* Make it a circle */
+    border: 6px solid white;
+    position: relative; /* Position relative to its parent */
+    top: 0; /* Position it at the top of its parent */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
+}
+
+.column-index {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    color: black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.word-choice {
+    margin: 2%;
+    text-align: center;
+    font-size: .8em;
+    height: 10%;
+    color: white;
+}

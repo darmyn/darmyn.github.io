@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    height: 10%;
+    padding: 1%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+header img {
+    height: 90%;
+    width: 30%;
+    object-fit: contain;
+}
